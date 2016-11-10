@@ -243,7 +243,11 @@ class AbstractChosen
 
   choices_click: (evt) ->
     evt.preventDefault()
-    this.results_show() unless @results_showing or @is_disabled
+    if @results_showing or @is_disabled
+      @activate_field()
+    else
+      this.results_show()
+
 
   keydown_checker: (evt) ->
     stroke = evt.which ? evt.keyCode
